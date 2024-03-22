@@ -1,3 +1,5 @@
 import "./styles.css";
+import { Todo } from "./todos";
 
-console.log("helo");
+const todoes1 = new Todo("1", "2", "3", "4");
+console.log(todoes1);

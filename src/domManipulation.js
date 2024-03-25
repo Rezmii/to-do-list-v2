@@ -1,3 +1,4 @@
+import { todoesArr } from ".";
 const containerGrid = document.querySelector("#container-grid");
 
 export function displaySets(setArr) {
@@ -39,5 +40,11 @@ function getGridElements() {
 }
 
 function renderSetTodoes(gridElement) {
-  containerGrid.innerHTML = gridElement.dataset.setId;
+  const setId = gridElement.dataset.setId;
+
+  todoesArr.forEach((todo) => {
+    if (parseInt(setId) === todo.id) {
+      containerGrid.innerHTML = todo;
+    }
+  });
 }

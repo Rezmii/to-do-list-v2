@@ -1,7 +1,8 @@
+const containerGrid = document.querySelector("#container-grid");
+
 export function displaySets(setArr) {
-  const containerGrid = document.querySelector("#container-grid");
   containerGrid.innerHTML = "";
-  setArr.forEach((set) => {
+  setArr.forEach((set, i) => {
     const gridElement = document.createElement("div");
 
     const topSection = document.createElement("div");
@@ -20,6 +21,23 @@ export function displaySets(setArr) {
     topSection.classList.add("top-section");
     bottomSection.classList.add("bottom-section");
     gridElement.classList.add("grid-element");
+    gridElement.setAttribute("data-set-id", i);
     containerGrid.appendChild(gridElement);
   });
+  getGridElements();
+}
+
+function getGridElements() {
+  const gridElements = document.querySelectorAll(".grid-element");
+  console.log(gridElements);
+
+  gridElements.forEach((gridElement) => {
+    gridElement.addEventListener("click", () => {
+      renderSetTodoes(gridElement);
+    });
+  });
+}
+
+function renderSetTodoes(gridElement) {
+  containerGrid.innerHTML = gridElement.dataset.setId;
 }

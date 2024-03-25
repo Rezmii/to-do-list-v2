@@ -40,4 +40,3 @@ set1.addSetToArray(setArr);
 set2.addSetToArray(setArr);
 
 displaySets(setArr);
-console.log(setArr);

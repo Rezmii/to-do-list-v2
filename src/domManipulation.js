@@ -1,5 +1,6 @@
 export function displaySets(setArr) {
   const containerGrid = document.querySelector("#container-grid");
+  containerGrid.innerHTML = "";
   setArr.forEach((set) => {
     const gridElement = document.createElement("div");
 

@@ -2,12 +2,16 @@ import "./styles.css";
 import { Todo } from "./todos";
 import { Set } from "./sets.js";
 import { displaySets } from "./domManipulation.js";
+import { setupFormValidation, getDialogValues } from "./dialogValues.js";
 
 const setArr = [];
 const dialog = document.querySelector("dialog");
 const showDialogButton = document.querySelector("#show-dialog-button");
 const closeButton = document.querySelector("#close-button");
 const addSetButton = document.querySelector("#add-set-button");
+
+const form = document.getElementById("add-set-form");
+setupFormValidation();
 
 showDialogButton.addEventListener("click", () => {
   dialog.showModal();
@@ -17,10 +21,21 @@ closeButton.addEventListener("click", () => {
 });
 addSetButton.addEventListener("click", () => {});
 
+form.addEventListener("submit", function (event) {
+  addNewSet();
+});
+
+function addNewSet() {
+  const setValues = getDialogValues();
+  const newSet = new Set(setValues[0], setValues[1], setValues[2]);
+  newSet.addSetToArray(setArr);
+  displaySets(setArr);
+}
+
 const todoes1 = new Todo("1", "2", "3", "4");
 
-const set1 = new Set(1, "Fitness", "⚽️", "red");
-const set2 = new Set(2, "Study", "📖", "blue");
+const set1 = new Set("Fitness", "⚽️", "red");
+const set2 = new Set("Study", "📖", "blue");
 set1.addSetToArray(setArr);
 set2.addSetToArray(setArr);
 

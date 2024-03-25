@@ -1,6 +1,5 @@
 export class Set {
-  constructor(id, title, emoji, bgc) {
-    this.id = id;
+  constructor(title, emoji, bgc) {
     this.title = title;
     this.emoji = emoji;
     this.bgc = bgc;

@@ -1,12 +1,10 @@
 export class Set {
-  constructor(title, emoji, bgc, todoesId) {
+  static currentId = 0;
+
+  constructor(title, emoji, bgc) {
+    this.id = Set.currentId++;
     this.title = title;
     this.emoji = emoji;
     this.bgc = bgc;
-    this.todoesId = todoesId;
   }
-
-  addSetToArray = (arr) => {
-    arr.push(this);
-  };
 }

@@ -30,7 +30,6 @@ export function displaySets(setArr) {
 
 function getGridElements() {
   const gridElements = document.querySelectorAll(".grid-element");
-  console.log(gridElements);
 
   gridElements.forEach((gridElement) => {
     gridElement.addEventListener("click", () => {
@@ -40,11 +39,31 @@ function getGridElements() {
 }
 
 function renderSetTodoes(gridElement) {
-  const setId = gridElement.dataset.setId;
+  containerGrid.innerHTML = "";
 
+  const todoesDiv = addTodoesGrid();
+  const todoesElements = addTodoesToGrid(gridElement);
+  todoesDiv.appendChild(todoesElements);
+  containerGrid.appendChild(todoesDiv);
+}
+
+function addTodoesGrid() {
+  const divElement = document.createElement("div");
+  const h1Element = document.createElement("h1");
+  h1Element.textContent = "Tasks";
+  divElement.appendChild(h1Element);
+  return divElement;
+}
+
+function addTodoesToGrid(gridElement) {
+  const setId = gridElement.dataset.setId;
+  const divElement = document.createElement("div");
   todoesArr.forEach((todo) => {
     if (parseInt(setId) === todo.id) {
-      containerGrid.innerHTML = todo;
+      const pElement = document.createElement("p");
+      pElement.textContent = `${todo.title} ${todo.description} ${todo.dueDate} ${todo.priority}`;
+      divElement.appendChild(pElement);
     }
   });
+  return divElement;
 }
